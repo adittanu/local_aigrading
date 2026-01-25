@@ -1,0 +1,108 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_aigrading/suggestion_modal
+
+    Template for AI grade suggestion modal content.
+
+    Context variables required for this template:
+    * grade - Suggested grade value
+    * maxgrade - Maximum possible grade
+    * feedback - Feedback text for student
+    * explanation - Explanation text for teacher
+    * strings - Localized strings
+
+    Example context (json):
+    {
+        "grade": 8.5,
+        "maxgrade": 10,
+        "feedback": "Good answer with relevant examples.",
+        "explanation": "Student demonstrated clear understanding.",
+        "strings": {
+            "suggestedgrade": "Suggested Grade",
+            "feedback": "Feedback",
+            "explanation": "Explanation"
+        }
+    }
+}}
+
+<div class="aigrading-suggestion-content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white mb-3">
+                <div class="card-body text-center">
+                    <h4 class="card-title mb-0">
+                        <i class="fa fa-star mr-1"></i>
+                        {{#strings.suggestedgrade}}{{strings.suggestedgrade}}{{/strings.suggestedgrade}}
+                        {{^strings.suggestedgrade}}Suggested Grade{{/strings.suggestedgrade}}
+                    </h4>
+                    <p class="display-4 mb-0 mt-2">
+                        <strong>{{grade}}</strong>
+                        <small class="h5">/ {{maxgrade}}</small>
+                    </p>
+                    {{#confidence}}
+                    <span class="badge 
+                        {{#confidenceHigh}}badge-success{{/confidenceHigh}}
+                        {{#confidenceMedium}}badge-warning{{/confidenceMedium}}
+                        {{#confidenceLow}}badge-danger{{/confidenceLow}}
+                        mt-2">
+                        <i class="fa fa-signal mr-1"></i>
+                        Confidence: {{confidence}}
+                    </span>
+                    {{/confidence}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-header bg-success text-white">
+                    <i class="fa fa-comment mr-1"></i>
+                    {{#strings.feedback}}{{strings.feedback}}{{/strings.feedback}}
+                    {{^strings.feedback}}Feedback for Student{{/strings.feedback}}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{feedback}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <i class="fa fa-info-circle mr-1"></i>
+            {{#strings.explanation}}{{strings.explanation}}{{/strings.explanation}}
+            {{^strings.explanation}}Explanation for Teacher{{/strings.explanation}}
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{explanation}}</p>
+        </div>
+    </div>
+
+    {{#confidenceLow}}
+    <div class="alert alert-danger mt-3 mb-0">
+        <i class="fa fa-exclamation-circle mr-1"></i>
+        <strong>Low Confidence:</strong> AI is uncertain about this assessment. No grading information or rubric was provided, or the AI lacks knowledge about the topic. Please review carefully!
+    </div>
+    {{/confidenceLow}}
+    {{^confidenceLow}}
+    <div class="alert alert-warning mt-3 mb-0">
+        <i class="fa fa-exclamation-triangle mr-1"></i>
+        <strong>Note:</strong> This is an AI-generated suggestion. Please review before applying.
+    </div>
+    {{/confidenceLow}}
+</div>
+
