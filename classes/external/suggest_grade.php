@@ -20,7 +20,7 @@ use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_single_structure;
 use core_external\external_value;
-use local_aigrading\ai_service;
+use local_aigrading\mastra_service;
 
 /**
  * External function to get AI grade suggestion for a single answer.
@@ -80,7 +80,7 @@ class suggest_grade extends external_api
         require_capability('local/aigrading:useaigrading', $context);
 
         // Call AI service.
-        $service = new ai_service();
+        $service = new mastra_service();
         $result = $service->suggest_grade(
             $params['questiontext'],
             $params['answertext'],

@@ -28,12 +28,12 @@ defined('MOODLE_INTERNAL') || die();
 $string['pluginname'] = 'AI Grading';
 
 // Settings.
-$string['apisettings'] = 'API Settings';
-$string['apisettings_desc'] = 'Configure OpenAI API connection settings.';
-$string['apikey'] = 'OpenAI API Key';
-$string['apikey_desc'] = 'Enter your OpenAI API key. Get one from https://platform.openai.com/api-keys';
-$string['apibaseurl'] = 'API Base URL';
-$string['apibaseurl_desc'] = 'Base URL for OpenAI API. Change this if using a compatible API provider.';
+$string['apisettings'] = 'Mastra AI Settings';
+$string['apisettings_desc'] = 'Configure Mastra/Laravel API connection settings.';
+$string['apikey'] = 'Mastra API Key';
+$string['apikey_desc'] = 'Enter your Mastra API key.';
+$string['apibaseurl'] = 'Mastra API Base URL';
+$string['apibaseurl_desc'] = 'Base URL for Mastra API (e.g., http://localhost:8000).';
 $string['model'] = 'Model';
 $string['model_desc'] = 'OpenAI model to use for grading. Examples: gpt-4o-mini, gpt-4o, gpt-3.5-turbo';
 

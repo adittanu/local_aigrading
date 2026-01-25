@@ -21,7 +21,7 @@ use core_external\external_function_parameters;
 use core_external\external_single_structure;
 use core_external\external_multiple_structure;
 use core_external\external_value;
-use local_aigrading\ai_service;
+use local_aigrading\mastra_service;
 
 /**
  * External function to auto-grade all ungraded essays for a quiz question.
@@ -116,7 +116,7 @@ class auto_grade_question extends external_api
         }
 
         // Use AI service to grade each attempt.
-        $service = new ai_service();
+        $service = new mastra_service();
         $graded = 0;
         $failed = 0;
 

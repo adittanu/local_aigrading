@@ -20,7 +20,7 @@ use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_single_structure;
 use core_external\external_value;
-use local_aigrading\ai_service;
+use local_aigrading\mastra_service;
 
 /**
  * External function to auto-grade all ungraded submissions for an assignment.
@@ -101,7 +101,7 @@ class auto_grade_assignment extends external_api
         }
 
         // Use AI service and file extractor.
-        $service = new \local_aigrading\ai_service();
+        $service = new \local_aigrading\mastra_service();
         $extractor = new \local_aigrading\file_extractor();
         $fs = get_file_storage();
 

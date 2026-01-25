@@ -35,7 +35,7 @@ if ($hassiteconfig) {
         get_string('apisettings_desc', 'local_aigrading')
     ));
 
-    // OpenAI API Key.
+    // Mastra API Key.
     $settings->add(new admin_setting_configpasswordunmask(
         'local_aigrading/apikey',
         get_string('apikey', 'local_aigrading'),
@@ -43,16 +43,17 @@ if ($hassiteconfig) {
         ''
     ));
 
-    // OpenAI Base URL.
+    // Mastra Base URL.
     $settings->add(new admin_setting_configtext(
         'local_aigrading/apibaseurl',
         get_string('apibaseurl', 'local_aigrading'),
         get_string('apibaseurl_desc', 'local_aigrading'),
-        'https://api.openai.com/v1',
+        'http://localhost:8000',
         PARAM_URL
     ));
 
-    // Model selection.
+    // Model selection - Hidden/Deprecated as handled by Mastra
+    /*
     $settings->add(new admin_setting_configtext(
         'local_aigrading/model',
         get_string('model', 'local_aigrading'),
@@ -60,6 +61,7 @@ if ($hassiteconfig) {
         'gpt-4o-mini',
         PARAM_TEXT
     ));
+    */
 
     // Usage Guide heading.
     $settings->add(new admin_setting_heading(
