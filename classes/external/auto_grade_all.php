@@ -20,7 +20,7 @@ use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_single_structure;
 use core_external\external_value;
-use local_aigrading\mastra_service;
+use local_aigrading\dali_service;
 
 /**
  * External function to auto-grade all ungraded essays for ALL questions in a quiz.
@@ -92,7 +92,7 @@ class auto_grade_all extends external_api
         }
 
         // Use AI service to grade.
-        $service = new mastra_service();
+        $service = new dali_service();
         $totalGraded = 0;
         $totalFailed = 0;
 

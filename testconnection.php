@@ -22,13 +22,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+define('AJAX_SCRIPT', true);
+
 require_once(__DIR__ . '/../../config.php');
-require_once($CFG->libdir . '/adminlib.php');
+require_once($CFG->libdir . '/filelib.php');
 
-admin_externalpage_setup('local_aigrading');
-
-$context = context_system::instance();
-require_capability('moodle/site:config', $context);
+require_login();
+require_sesskey();
+require_capability('moodle/site:config', context_system::instance());
 
 $apikey = get_config('local_aigrading', 'apikey');
 $apibaseurl = get_config('local_aigrading', 'apibaseurl') ?: 'http://localhost:8000';
@@ -44,11 +45,18 @@ if (empty($apikey)) {
     // Test connection to Laravel/Dali API
     $testurl = rtrim($apibaseurl, '/') . '/api/moodle/grade';
     
-    $curl = new curl();
+    // Create curl with ignoresecurity flag to bypass Moodle's cURL security restrictions
+    $curl = new curl(['ignoresecurity' => true]);
     $curl->setHeader([
         'Content-Type: application/json',
         'X-API-KEY: ' . $apikey,
         'Accept: application/json'
+    ]);
+    
+    // Disable SSL verification for local development
+    $curl->setopt([
+        'CURLOPT_SSL_VERIFYPEER' => false,
+        'CURLOPT_SSL_VERIFYHOST' => 0,
     ]);
     
     // Send a minimal test payload
@@ -80,6 +88,4 @@ if (empty($apikey)) {
 }
 
 // Return JSON response
-header('Content-Type: application/json');
 echo json_encode($result);
-exit;

@@ -21,7 +21,7 @@ use core_external\external_function_parameters;
 use core_external\external_single_structure;
 use core_external\external_multiple_structure;
 use core_external\external_value;
-use local_aigrading\mastra_service;
+use local_aigrading\dali_service;
 
 /**
  * External function to get AI grade suggestions for multiple answers (bulk grading).
@@ -83,7 +83,7 @@ class bulk_grade extends external_api
         require_capability('local/aigrading:useaigrading', $context);
 
         // Call AI service.
-        $service = new mastra_service();
+        $service = new dali_service();
         $results = $service->bulk_grade(
             $params['questiontext'],
             $params['answers'],

@@ -29,11 +29,11 @@ $string['pluginname'] = 'AI Grading';
 
 // Settings.
 $string['apisettings'] = 'Dali';
-$string['apisettings_desc'] = 'Configure Mastra/Laravel API connection settings.';
-$string['apikey'] = 'Mastra API Key';
-$string['apikey_desc'] = 'Enter your Mastra API key.';
-$string['apibaseurl'] = 'Mastra API Base URL';
-$string['apibaseurl_desc'] = 'Base URL for Mastra API (e.g., http://localhost:8000).';
+$string['apisettings_desc'] = 'Configure Dali API connection settings.';
+$string['apikey'] = 'Dali API Key';
+$string['apikey_desc'] = 'Enter your Dali API key.';
+$string['apibaseurl'] = 'Dali API Base URL';
+$string['apibaseurl_desc'] = 'Base URL for Dali API (e.g., https://dali-app.test).';
 $string['model'] = 'Model';
 $string['model_desc'] = 'OpenAI model to use for grading. Examples: gpt-4o-mini, gpt-4o, gpt-3.5-turbo';
 
@@ -91,14 +91,6 @@ Equation: 6CO2 + 6H2O + light → C6H12O6 + 6O2
 <p><strong>Note:</strong> If "Information for graders" is empty, AI will grade based on general criteria like structure, coherence, and language use. The confidence level will be lower.</p>
 </div>';
 
-$string['advancedsettings'] = 'Advanced Settings';
-$string['maxtokens'] = 'Max Tokens';
-$string['maxtokens_desc'] = 'Maximum number of tokens in AI response.';
-$string['temperature'] = 'Temperature';
-$string['temperature_desc'] = 'AI temperature (0.0-1.0). Lower values make output more focused and deterministic.';
-$string['maxtextlength'] = 'Max Text Length';
-$string['maxtextlength_desc'] = 'Maximum characters to extract from files (PDF, DOCX, TXT). Longer texts will be truncated.';
-
 // Capabilities.
 $string['aigrading:useaigrading'] = 'Use AI grading suggestions';
 
@@ -123,9 +115,9 @@ $string['autogradecomplete'] = 'Auto-grading complete: {$a->graded} graded, {$a-
 $string['autogradeconfirm'] = 'Are you sure you want to auto-grade all ungraded essays for this question? This will apply grades automatically without review.';
 
 // Error messages.
-$string['error:noapikey'] = 'OpenAI API key is not configured. Please configure it in plugin settings.';
-$string['error:apierror'] = 'OpenAI API error: {$a}';
-$string['error:invalidresponse'] = 'Invalid response from AI. Please try again.';
+$string['error:noapikey'] = 'Dali API key is not configured. Please configure it in plugin settings.';
+$string['error:apierror'] = 'Dali API error: {$a}';
+$string['error:invalidresponse'] = 'Invalid response from Dali. Please try again.';
 $string['error:nopermission'] = 'You do not have permission to use AI grading.';
 
 // Test connection.

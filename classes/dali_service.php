@@ -17,14 +17,14 @@
 namespace local_aigrading;
 
 /**
- * Mastra Service class for communicating with Mastra backend via Laravel API.
+ * Dali Service class for communicating with Dali backend via Laravel API.
  * Replaces direct OpenAI calls.
  *
  * @package    local_aigrading
  * @copyright  2025
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class mastra_service
+class dali_service
 {
 
     /** @var string API key */
@@ -137,11 +137,18 @@ class mastra_service
     {
         $url = rtrim($this->baseurl, '/') . '/api/moodle/grade';
 
-        $curl = new \curl();
+        // Create curl with ignoresecurity flag to bypass Moodle's cURL security restrictions
+        $curl = new \curl(['ignoresecurity' => true]);
         $curl->setHeader([
             'Content-Type: application/json',
             'X-API-KEY: ' . $this->apikey,
             'Accept: application/json'
+        ]);
+        
+        // Disable SSL verification for local development
+        $curl->setopt([
+            'CURLOPT_SSL_VERIFYPEER' => false,
+            'CURLOPT_SSL_VERIFYHOST' => 0,
         ]);
 
         $response = $curl->post($url, json_encode($data));

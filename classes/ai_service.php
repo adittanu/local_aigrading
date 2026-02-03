@@ -195,10 +195,17 @@ class ai_service
             'response_format' => ['type' => 'json_object'],
         ];
 
-        $curl = new \curl();
+        // Create curl with ignoresecurity flag to bypass Moodle's cURL security restrictions
+        $curl = new \curl(['ignoresecurity' => true]);
         $curl->setHeader([
             'Content-Type: application/json',
             'Authorization: Bearer ' . $this->apikey,
+        ]);
+        
+        // Disable SSL verification for local development
+        $curl->setopt([
+            'CURLOPT_SSL_VERIFYPEER' => false,
+            'CURLOPT_SSL_VERIFYHOST' => 0,
         ]);
 
         $response = $curl->post($url, json_encode($data));

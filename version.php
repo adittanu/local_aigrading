@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_aigrading';
-$plugin->version = 2025121806;  // Fixed test connection JS - vanilla JS
+$plugin->version = 2025121808;  // Fixed test connection auth
 $plugin->requires = 2024042200; // Moodle 4.4+
 $plugin->maturity = MATURITY_ALPHA;
 $plugin->release = '1.2.0';

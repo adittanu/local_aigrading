@@ -38,7 +38,7 @@ if ($hassiteconfig) {
         get_string('apisettings_desc', 'local_aigrading')
     ));
 
-    // Mastra API Key.
+    // Dali API Key.
     $settings->add(new admin_setting_configpasswordunmask(
         'local_aigrading/apikey',
         get_string('apikey', 'local_aigrading'),
@@ -46,7 +46,7 @@ if ($hassiteconfig) {
         ''
     ));
 
-    // Mastra Base URL.
+    // Dali Base URL.
     $settings->add(new admin_setting_configtext(
         'local_aigrading/apibaseurl',
         get_string('apibaseurl', 'local_aigrading'),
@@ -131,37 +131,4 @@ Pastikan:
         $defaultprompt
     ));
 
-    // Advanced Settings heading.
-    $settings->add(new admin_setting_heading(
-        'local_aigrading/advancedheading',
-        get_string('advancedsettings', 'local_aigrading'),
-        ''
-    ));
-
-    // Max tokens.
-    $settings->add(new admin_setting_configtext(
-        'local_aigrading/maxtokens',
-        get_string('maxtokens', 'local_aigrading'),
-        get_string('maxtokens_desc', 'local_aigrading'),
-        '1000',
-        PARAM_INT
-    ));
-
-    // Temperature.
-    $settings->add(new admin_setting_configtext(
-        'local_aigrading/temperature',
-        get_string('temperature', 'local_aigrading'),
-        get_string('temperature_desc', 'local_aigrading'),
-        '0.3',
-        PARAM_FLOAT
-    ));
-
-    // Max text length for file extraction.
-    $settings->add(new admin_setting_configtext(
-        'local_aigrading/maxtextlength',
-        get_string('maxtextlength', 'local_aigrading'),
-        get_string('maxtextlength_desc', 'local_aigrading'),
-        '50000',
-        PARAM_INT
-    ));
 }

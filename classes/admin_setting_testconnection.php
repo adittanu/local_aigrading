@@ -71,7 +71,7 @@ class admin_setting_testconnection extends \admin_setting {
     public function output_html($data, $query = '') {
         global $OUTPUT;
 
-        $testurl = new \moodle_url('/local/aigrading/testconnection.php');
+        $testurl = new \moodle_url('/local/aigrading/testconnection.php', ['sesskey' => sesskey()]);
         $buttonid = 'testconnection-btn';
         $resultid = 'testconnection-result';
 
@@ -88,7 +88,7 @@ class admin_setting_testconnection extends \admin_setting {
         $html .= \html_writer::div('', 'mt-2', ['id' => $resultid]);
         $html .= \html_writer::end_div();
 
-        // Add JavaScript for AJAX handling - using vanilla JavaScript
+        // Add JavaScript for AJAX handling - using vanilla JavaScript with POST
         $html .= '
 <script type="text/javascript">
 //<![CDATA[
@@ -107,7 +107,8 @@ document.addEventListener("DOMContentLoaded", function() {
             result.textContent = "";
             
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", testUrl, true);
+            xhr.open("POST", testUrl, true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.setRequestHeader("Accept", "application/json");
             
             xhr.onreadystatechange = function() {
@@ -131,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
                     } else {
                         result.className = "mt-2 alert alert-danger";
-                        result.textContent = "Connection failed: Unable to reach the server.";
+                        result.textContent = "Connection failed: HTTP " + xhr.status;
                     }
                 }
             };
@@ -143,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 result.textContent = "Connection failed: Unable to reach the server.";
             };
             
-            xhr.send();
+            xhr.send("test=1&sesskey=" + M.cfg.sesskey);
         });
     }
 });
