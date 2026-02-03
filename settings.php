@@ -24,6 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+// Load the test connection class.
+require_once(__DIR__ . '/classes/admin_setting_testconnection.php');
+
 if ($hassiteconfig) {
     $settings = new admin_settingpage('local_aigrading', get_string('pluginname', 'local_aigrading'));
     $ADMIN->add('localplugins', $settings);
@@ -50,6 +53,13 @@ if ($hassiteconfig) {
         get_string('apibaseurl_desc', 'local_aigrading'),
         'http://localhost:8000',
         PARAM_URL
+    ));
+
+    // Test Connection button.
+    $settings->add(new \local_aigrading\admin_setting_testconnection(
+        'local_aigrading/testconnection',
+        get_string('testconnection', 'local_aigrading'),
+        get_string('testconnection_help', 'local_aigrading')
     ));
 
     // Model selection - Hidden/Deprecated as handled by Mastra

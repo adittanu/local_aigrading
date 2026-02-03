@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_aigrading';
-$plugin->version = 2025121802;  // Added file grading support (PDF, DOCX, TXT)
+$plugin->version = 2025121806;  // Fixed test connection JS - vanilla JS
 $plugin->requires = 2024042200; // Moodle 4.4+
 $plugin->maturity = MATURITY_ALPHA;
 $plugin->release = '1.2.0';

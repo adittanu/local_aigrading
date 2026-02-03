@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 $string['pluginname'] = 'AI Grading';
 
 // Settings.
-$string['apisettings'] = 'Mastra AI Settings';
+$string['apisettings'] = 'Dali';
 $string['apisettings_desc'] = 'Configure Mastra/Laravel API connection settings.';
 $string['apikey'] = 'Mastra API Key';
 $string['apikey_desc'] = 'Enter your Mastra API key.';
@@ -127,3 +127,13 @@ $string['error:noapikey'] = 'OpenAI API key is not configured. Please configure 
 $string['error:apierror'] = 'OpenAI API error: {$a}';
 $string['error:invalidresponse'] = 'Invalid response from AI. Please try again.';
 $string['error:nopermission'] = 'You do not have permission to use AI grading.';
+
+// Test connection.
+$string['testconnection'] = 'Test Connection';
+$string['testconnection_help'] = 'Click to test if the plugin can connect to the Dali API.';
+$string['testconnection_noapikey'] = 'API key is not configured. Please enter an API key first.';
+$string['testconnection_curlerror'] = 'Connection failed: {$a}';
+$string['testconnection_success'] = 'Connection successful! The plugin can communicate with the Dali API.';
+$string['testconnection_unauthorized'] = 'Connection failed: Invalid API key. Please check your API key configuration.';
+$string['testconnection_serviceerror'] = 'Connection failed: Dali service error - {$a}';
+$string['testconnection_httperror'] = 'Connection failed: HTTP error {$a}';
